@@ -13,4 +13,4 @@ def esperaPorTexto(page, texto, timeout):
     expect(page.locator("text=" + texto)).to_be_visible(timeout=timeout)
 
 def fecharNavegador(browser):
-    browser.close()  # Fechar o navegador, se necessário, passe o objeto browser
+    browser.close()

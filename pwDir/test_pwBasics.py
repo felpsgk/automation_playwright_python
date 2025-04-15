@@ -22,10 +22,14 @@ def test_login():
     with iniciar_browser() as (page, browser):
         try:
             navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")
+            print(page, "link.png")  # Captura um print inicial
             preencherCampo(page, "#username", "ua_automasuper")
+            print(page, "login.png")  # Captura um print inicial
             preencherCampo(page, "#password", "Ab147258369@")
             clicarBotaoPorTexto(page, "Entrar")
+            print(page, "entrar.png")  # Captura um print inicial
             esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 7000)
+            print(page, "sucesso.png")  # Captura um print inicial
         except Exception as e:
             # Captura um print em caso de erro
             page.screenshot(path="screenshot_error.png")

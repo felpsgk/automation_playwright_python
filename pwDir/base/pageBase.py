@@ -1,5 +1,9 @@
 from playwright.sync_api import expect
 
+def print(page, pathh):
+    page.screenshot(path=pathh)
+
+
 def navegarPara(page, link):
     page.goto(link)
 

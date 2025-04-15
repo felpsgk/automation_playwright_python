@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 import os
-import pytest
+import pytest_html
 
 def printTela(page, caminho_arquivo, request=None):
     page.screenshot(path=caminho_arquivo)

@@ -2,16 +2,13 @@ from playwright.sync_api import expect
 import os
 import pytest_html
 
-def printTela(page, caminho_arquivo, request=None):
-    page.screenshot(path=caminho_arquivo)
-    
+def printTela(page, path, request=None):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    page.screenshot(path=path)
     if request:
-        if hasattr(request.config, "_html") and request.node:
-            extra = getattr(request.node, "extra", [])
-            rel_path = os.path.relpath(caminho_arquivo)
-            extra.append(pytest_html.extras.image(rel_path))
-            request.node.extra = extra
-
+        rel_path = os.path.relpath(path)
+        request.node.extra = getattr(request.node, "extra", [])
+        request.node.extra.append(pytest_html.extras.image(rel_path))
 
 
 def navegarPara(page, link):

@@ -4,7 +4,7 @@ from contextlib import contextmanager
 @contextmanager
 def iniciar_browser():
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
+        browser = playwright.chromium.launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
         try:

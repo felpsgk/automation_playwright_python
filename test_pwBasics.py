@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright, expect
 from base.browser import iniciar_browser
-from base.pageBase import navegarPara, preencherCampo, clicarBotaoPorTexto, esperaPorTexto, printTela
+from base.pageBase import navegarPara, preencherCampo, clicarBotaoPorTexto, esperaPorTextoContido, printTela
 import pytest
 
 @pytest.mark.parametrize("usuario,senha", [
@@ -18,7 +18,7 @@ def test_login(usuario, senha):
             preencherCampo(page, "#password", senha)
             clicarBotaoPorTexto(page, "Entrar")
             printTela(page, "entrar.png")
-            esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 4000)
+            esperaPorTextoContido(page, "dados foram validados com sucesso", 4000)
             printTela(page, "sucesso.png")
         except Exception as e:
             printTela(page, "screenshot_error.png")

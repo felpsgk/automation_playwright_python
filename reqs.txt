@@ -4,3 +4,4 @@ pytest-playwright
 behave
 pytest-bdd
 allure-pytest
+pytest-html

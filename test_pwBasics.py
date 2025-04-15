@@ -18,7 +18,7 @@ def test_login(usuario, senha):
             preencherCampo(page, "#password", senha)
             clicarBotaoPorTexto(page, "Entrar")
             printTela(page, "entrar.png")
-            esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 12000)
+            esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 4000)
             printTela(page, "sucesso.png")
         except Exception as e:
             printTela(page, "screenshot_error.png")

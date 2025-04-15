@@ -1,0 +1,6 @@
+playwright
+pytest
+pytest-playwright
+behave
+pytest-bdd
+allure-pytest

@@ -19,10 +19,14 @@ from base.pageBase import navegarPara, preencherCampo, clicarBotaoPorTexto, espe
 #         browser.close()  # Fechar o navegador
 
 def test_login():
-
     with iniciar_browser() as (page, browser):
-        navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")
-        preencherCampo(page, "#username", "ua_automasuper")
-        preencherCampo(page, "#password", "Ab147258369@")
-        clicarBotaoPorTexto(page, "Entrar")
-        esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 7000)
+        try:
+            navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")
+            preencherCampo(page, "#username", "ua_automasuper")
+            preencherCampo(page, "#password", "Ab147258369@")
+            clicarBotaoPorTexto(page, "Entrar")
+            esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 7000)
+        except Exception as e:
+            # Captura um print em caso de erro
+            page.screenshot(path="screenshot_error.png")
+            raise e  # Relança o erro após salvar o print

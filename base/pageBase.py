@@ -1,7 +1,17 @@
 from playwright.sync_api import expect
+import os
+import pytest
 
-def printTela(page, pathh):
-    page.screenshot(path=pathh)
+def printTela(page, caminho_arquivo, request=None):
+    page.screenshot(path=caminho_arquivo)
+    
+    if request:
+        if hasattr(request.config, "_html") and request.node:
+            extra = getattr(request.node, "extra", [])
+            rel_path = os.path.relpath(caminho_arquivo)
+            extra.append(pytest_html.extras.image(rel_path))
+            request.node.extra = extra
+
 
 
 def navegarPara(page, link):

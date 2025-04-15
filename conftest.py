@@ -3,8 +3,9 @@ import os
 import pytest_html
 
 def pytest_configure(config):
-    # Garante que a variável extra existe
     config._metadata = {}
+    if not hasattr(config, '_html'):
+        return
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):

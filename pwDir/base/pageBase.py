@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 
-def print(page, pathh):
+def printTela(page, pathh):
     page.screenshot(path=pathh)
 
 

@@ -1,6 +1,6 @@
 from playwright.sync_api import sync_playwright, expect
 from base.browser import iniciar_browser
-from base.pageBase import navegarPara, preencherCampo, clicarBotaoPorTexto, esperaPorTexto, fecharNavegador
+from base.pageBase import navegarPara, preencherCampo, clicarBotaoPorTexto, esperaPorTexto, printTela
 
 # def test_V1pwBasics():
 #     with sync_playwright() as playwright:  # Usando o contexto manual para evitar a fixture
@@ -22,14 +22,14 @@ def test_login():
     with iniciar_browser() as (page, browser):
         try:
             navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")
-            print(page, "link.png")  # Captura um print inicial
+            printTela(page, "link.png")  # Captura um print inicial
             preencherCampo(page, "#username", "ua_automasuper")
-            print(page, "login.png")  # Captura um print inicial
+            printTela(page, "login.png")  # Captura um print inicial
             preencherCampo(page, "#password", "Ab147258369@")
             clicarBotaoPorTexto(page, "Entrar")
-            print(page, "entrar.png")  # Captura um print inicial
+            printTela(page, "entrar.png")  # Captura um print inicial
             esperaPorTexto(page, "Parabéns, seus dados foram validados com sucesso", 7000)
-            print(page, "sucesso.png")  # Captura um print inicial
+            printTela(page, "sucesso.png")  # Captura um print inicial
         except Exception as e:
             # Captura um print em caso de erro
             page.screenshot(path="screenshot_error.png")

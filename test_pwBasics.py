@@ -19,7 +19,7 @@ def test_login(request):
             printTela(page, "C:\ProgramData\Jenkins\slave\workspace\python\screenshot_error.png", request)
             raise e  # Relança o erro após salvar o print
 
-def test_login2():
+def test_login2(request):
     with iniciar_browser() as (page, browser):
         try:
             navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")
@@ -36,7 +36,7 @@ def test_login2():
             printTela(page, "C:\ProgramData\Jenkins\slave\workspace\python\screenshot_error.png", request)
             raise e  # Relança o erro após salvar o print
 
-def test_login3():
+def test_login3(request):
     with iniciar_browser() as (page, browser):
         try:
             navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")

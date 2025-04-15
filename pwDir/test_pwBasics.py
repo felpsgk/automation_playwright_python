@@ -2,27 +2,24 @@ from playwright.sync_api import sync_playwright, expect
 from base.browser import iniciar_browser
 from base.pageBase import navegarPara, preencherCampo, clicarBotaoPorTexto, esperaPorTexto, fecharNavegador
 
-def test_V1pwBasics():
-    with sync_playwright() as playwright:  # Usando o contexto manual para evitar a fixture
-        browser = playwright.chromium.launch(headless=False)  # Abrir o navegador
-        context = browser.new_context()  # Criar um contexto de navegação (incógnito)
-        page = context.new_page()  # Abrir uma nova aba
-        page.goto("https://apphml.unimedbh.com.br/unimedagenda")  # Navegar até o link
+# def test_V1pwBasics():
+#     with sync_playwright() as playwright:  # Usando o contexto manual para evitar a fixture
+#         browser = playwright.chromium.launch(headless=False)  # Abrir o navegador
+#         context = browser.new_context()  # Criar um contexto de navegação (incógnito)
+#         page = context.new_page()  # Abrir uma nova aba
+#         page.goto("https://apphml.unimedbh.com.br/unimedagenda")
 
-        # Preencher os campos de login
-        page.fill("#username", "ua_automasuper")
-        page.fill("#password", "Ab147258369@")
+#         page.fill("#username", "ua_automasuper")
+#         page.fill("#password", "Ab147258369@")
 
-        # Clicar no botão "Entrar"
-        page.locator('button:text("Entrar")').click()  # Clicar no botão pelo texto
+#         page.locator('button:text("Entrar")').click()
 
-        # Esperar pelo texto na página
-        expect(page.locator("text=Parabéns, seus dados foram validados com sucesso")).to_be_visible(timeout=3000)
+#         expect(page.locator("text=Parabéns, seus dados foram validados com sucesso")).to_be_visible(timeout=3000)
 
-        browser.close()  # Fechar o navegador
+#         browser.close()  # Fechar o navegador
 
 def test_login():
-    # Usando o contexto de gerenciamento do navegador
+
     with iniciar_browser() as (page, browser):
         navegarPara(page, "https://apphml.unimedbh.com.br/unimedagenda")
         preencherCampo(page, "#username", "ua_automasuper")
